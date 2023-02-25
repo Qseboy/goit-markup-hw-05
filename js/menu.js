@@ -7,8 +7,8 @@
     }
     per.currentLink = new URL(per.currentLink);
 
-    // console.log("currentLink", per.currentLink.href)
-    // console.log("currentURL", per.currentUrl)
+    console.log("currentLink", per.currentLink.href)
+    console.log("currentURL", per.currentUrl)
 
     if (per.currentLink.href !== per.currentUrl) {
         document.getElementById("link-active").removeAttribute("id");
