@@ -6,6 +6,7 @@
   --ocean-color: #404bbf;
   --light-backgroud-color: #f4f4fd;
   --main-font: 'Roboto', sans-serif;
+  --border-bg-color: #e7e9fc;
 }
 
 body {
@@ -104,7 +105,7 @@ address {
 
 /* Header */
 .header {
-  border-bottom: 1px solid #e7e9fc;
+  border-bottom: 1px solid var(--border-bg-color);
   box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16),
     0px 1px 6px rgba(46, 47, 66, 0.08);
 }
@@ -141,6 +142,10 @@ address {
   gap: 40px;
 }
 
+.nav-item {
+  position: relative;
+}
+
 .nav-link {
   display: block;
   padding: 24px 0;
@@ -148,6 +153,10 @@ address {
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.02em;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link:active {
@@ -162,6 +171,18 @@ address {
   color: var(--ocean-color);
 }
 
+#link-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
 .address-list {
   display: flex;
   gap: 40px;
@@ -172,6 +193,10 @@ address {
   line-height: 1.5;
   letter-spacing: 0.02em;
   font-style: normal;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address-link:active {
@@ -222,10 +247,14 @@ address {
   background: var(--accent-color);
   border: none;
   padding: 16px 32px;
+
+  transition-property: background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-button:hover {
-  background: #404bbf;
+  background-color: #404bbf;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
@@ -333,6 +362,10 @@ address {
   border-radius: 50%;
 
   fill: #f4f4f4;
+
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-social-list .link:hover,
@@ -374,6 +407,10 @@ address {
   border: 1px solid #8e8f99;
   border-radius: 4px;
   fill: #8e8f99;
+
+  transition-property: fill, border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-link:hover,
@@ -398,17 +435,21 @@ address {
 .portfolio-button {
   color: var(--accent-color);
   background-color: var(--light-backgroud-color);
-  border: 1px solid #e7e9fc;
+  border: 1px solid var(--border-bg-color);
   border-radius: 4px;
   padding: 12px 24px;
+
+  transition-property: background-color, box-shadow, border-color, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-button:hover,
 .portfolio-button:focus {
-  background: var(--accent-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  /* border: 1px inherit; */
   color: var(--white-color);
 }
 
@@ -423,22 +464,56 @@ address {
   flex-basis: calc((100% - 48px) / 3);
 }
 
+.portfolio-card {
+  display: block;
+  transition: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .portfolio-card:hover,
 .portfolio-card:focus {
-  display: block;
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16),
     0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
-.portfolio-img {
-  display: block;
+.portfolio-card-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-thumb-meta {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  padding-top: 40px;
+  padding-left: 32px;
+  padding-right: 32px;
+  background-color: var(--accent-color);
+
+  transform: translatey(100%);
+  transition: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-card:hover .portfolio-thumb-meta {
+  transform: translatey(0);
+}
+
+.portfolio-thumb-text {
+  line-height: 1.5;
+  color: var(--light-backgroud-color);
+  letter-spacing: 0.02em;
 }
 
 .portfolio-preview {
   padding: 32px 0 32px 16px;
-  border-left: 1px solid #e7e9fc;
-  border-right: 1px solid #e7e9fc;
-  border-bottom: 1px solid #e7e9fc;
+  border-left: 1px solid var(--border-bg-color);
+  border-right: 1px solid var(--border-bg-color);
+  border-bottom: 1px solid var(--border-bg-color);
 }
 
 .portfolio-subtitle {
@@ -470,7 +545,7 @@ address {
 .footer-text {
   margin-top: 16px;
   margin-bottom: 0;
-  color: #e7e9fc;
+  color: var(--border-bg-color);
   line-height: 1.5;
   letter-spacing: 0.02em;
 }
@@ -500,6 +575,10 @@ address {
   fill: var(--light-backgroud-color);
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-social-link:hover,
 .footer-social-link:focus {
@@ -509,4 +588,65 @@ address {
 .footer-social-icons {
   width: 24px;
   height: 24px;
+}
+
+/* Modal */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(46, 47, 66, 0.4);
+  transition-property: opacity;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-hidden {
+  visibility: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.is-hidden .modal {
+  transform: translateY(100%);
+}
+
+.modal {
+  position: absolute;
+  min-width: 408px;
+  min-height: 576px;
+
+  background-color: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transform: translateY(0);
+  transition-property: transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  width: 24px;
+  height: 24px;
+  background-color: var(--border-bg-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+
+  fill: #000000;
+  cursor: pointer;
+  padding: 0;
+  line-height: 0;
 }

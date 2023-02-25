@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,9 +25,11 @@
           <nav class="nav">
             <a class="logo" href="./index.html"><span class="logo-color">Web</span>Studio</a>
             <ul class="nav-list">
-              <li class="nav-item"><a class="nav-link" href="">Studio</a></li>
+              <li class="nav-item">
+                <a id="link-active" class="nav-link" href="./index.html">Studio</a>
+              </li>
               <li class="nav-item"><a class="nav-link" href="./portfolio.html">Portfolio</a></li>
-              <li class="nav-item"><a class="nav-link" href="">Contacts</a></li>
+              <li class="nav-item"><a class="nav-link" href="./contacts.html">Contacts</a></li>
             </ul>
           </nav>
           <address class="address">
@@ -49,7 +51,7 @@
       <section class="hero bg">
         <div class="container">
           <h1 class="hero-title">Effective Solutions for Your Business</h1>
-          <button class="hero-button btn" type="button">Order Service</button>
+          <button class="hero-button btn" type="button" data-modal-open>Order Service</button>
         </div>
       </section>
 
@@ -404,5 +406,19 @@
         </div>
       </div>
     </footer>
+
+    <!-- modal -->
+    <div class="backdrop is-hidden" data-modal data-modal-close>
+      <div class="modal">
+        <button class="close-button" type="button" data-modal-close>
+          <svg width="8" height="8">
+            <use href="./images/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script src="./js/modal.js"></script>
+    <script src="./js/menu.js"></script>
   </body>
 </html>
