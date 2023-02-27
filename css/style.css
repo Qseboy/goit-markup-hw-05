@@ -171,6 +171,10 @@ address {
   color: var(--ocean-color);
 }
 
+#link-active {
+  color: var(--ocean-color);
+}
+
 #link-active::after {
   content: '';
   position: absolute;
@@ -604,13 +608,13 @@ address {
   height: 100%;
 
   background-color: rgba(46, 47, 66, 0.4);
-  transition-property: opacity;
+  transition-property: opacity, visibility;
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .is-hidden {
-  visibility: none;
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
